@@ -11,8 +11,19 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int lives = 3;
 
+    private static GameManager instance;
+
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(this.gameObject);
 
         SceneManager.sceneLoaded += OnLevelLoaded;
@@ -72,6 +83,8 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         SceneManager.LoadScene(0);
+        this.score = 0;
+        this.lives = 3;
     }
 
     public void Miss()

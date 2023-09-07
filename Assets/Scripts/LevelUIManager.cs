@@ -43,11 +43,11 @@ public class LevelUIManager : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = "Очков: " + gameManager.score;
+        scoreText.text = "Score: " + gameManager.score;
     }
 
     private void UpdateLivesText()
     {
-        livesText.text = "Жизней: " + gameManager.lives;
+        livesText.text = "Lives: " + gameManager.lives;
     }
 }
