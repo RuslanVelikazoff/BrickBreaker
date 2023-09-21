@@ -18,12 +18,6 @@ public class Paddle : MonoBehaviour
         this.rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        
-        //TODO: add button for android
-    }
-
     public void OnLeftButton()
     {
         direction = Vector2.left;
