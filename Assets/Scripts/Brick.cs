@@ -1,9 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Brick : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer { get; private set; }
-    public Sprite[] states;
+    public SpriteRenderer brickSprite { get; private set; }
+    public Sprite[] brickStatesSprite;
 
     public int health { get; private set; }
     public int points = 100;
@@ -11,7 +12,7 @@ public class Brick : MonoBehaviour
 
     private void Awake()
     {
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
+        this.brickSprite = GetComponent<SpriteRenderer>();
         ResetBrick();
     }
 
@@ -30,7 +31,7 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            this.spriteRenderer.sprite = this.states[health - 1];
+            this.brickSprite.sprite = this.brickStatesSprite[health - 1];
         }
 
         FindAnyObjectByType<GameManager>().Hit(this);
@@ -42,8 +43,8 @@ public class Brick : MonoBehaviour
 
         if (this.unbreakable)
         {
-            this.health = this.states.Length;
-            this.spriteRenderer.sprite = this.states[this.health - 1];
+            this.health = this.brickStatesSprite.Length;
+            this.brickSprite.sprite = this.brickStatesSprite[this.health - 1];
         }
     }
 

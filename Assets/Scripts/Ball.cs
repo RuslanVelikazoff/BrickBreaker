@@ -1,13 +1,14 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Ball : MonoBehaviour
 {
-    public Rigidbody2D rigidbody { get; private set; }
+    public Rigidbody2D ballRigidbody { get; private set; }
     public float speed = 500f;
 
     private void Awake()
     {
-        this.rigidbody = GetComponent<Rigidbody2D>();
+        this.ballRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -18,7 +19,7 @@ public class Ball : MonoBehaviour
     public void ResetBall()
     {
         this.transform.position = Vector2.zero;
-        this.rigidbody.velocity = Vector2.zero;
+        this.ballRigidbody.velocity = Vector2.zero;
 
         Invoke(nameof(SetRandomTrajectory), 1f);
     }
@@ -29,6 +30,6 @@ public class Ball : MonoBehaviour
         force.x = Random.Range(-1f, 1f);
         force.y = -1f;
 
-        this.rigidbody.AddForce(force.normalized * this.speed);
+        this.ballRigidbody.AddForce(force.normalized * this.speed);
     }
 }

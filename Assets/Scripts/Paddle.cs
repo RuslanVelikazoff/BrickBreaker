@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : MonoBehaviour
 {
     public Button rightButton;
     public Button leftButton;
 
-    public Rigidbody2D rigidbody { get; private set; }
+    public Rigidbody2D paddleRigidbody { get; private set; }
 
     public Vector2 direction { get; private set; }
 
@@ -15,7 +16,7 @@ public class Paddle : MonoBehaviour
 
     private void Awake()
     {
-        this.rigidbody = GetComponent<Rigidbody2D>();
+        this.paddleRigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void OnLeftButton()
@@ -37,18 +38,18 @@ public class Paddle : MonoBehaviour
     {
         if (this.direction != Vector2.zero)
         {
-            this.rigidbody.AddForce(this.direction * this.speed);
+            this.paddleRigidbody.AddForce(this.direction * this.speed);
         }
     }
 
     public void ResetPaddle()
     {
         this.transform.position = new Vector2(0f, this.transform.position.y);
-        this.rigidbody.velocity = Vector2.zero;
+        this.paddleRigidbody.velocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    { 
         Ball ball = collision.gameObject.GetComponent<Ball>();
 
         if (ball != null)
@@ -60,12 +61,12 @@ public class Paddle : MonoBehaviour
             float offset = paddlePosition.x - contactPoint.x;
             float width = collision.otherCollider.bounds.size.x / 2;
 
-            float currentAngle = Vector2.SignedAngle(Vector2.up, ball.rigidbody.velocity);
+            float currentAngle = Vector2.SignedAngle(Vector2.up, ball.GetComponent<Rigidbody2D>().velocity);
             float bounceAngle = (offset / width) * this.maxBounceAngle;
             float newAngle = Mathf.Clamp(currentAngle + bounceAngle, -this.maxBounceAngle, this.maxBounceAngle);
 
             Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
-            ball.rigidbody.velocity = rotation * Vector2.up * ball.rigidbody.velocity.magnitude;
+            ball.GetComponent<Rigidbody2D>().velocity = rotation * Vector2.up * ball.GetComponent<Rigidbody2D>().velocity.magnitude;
         }
     }
 }

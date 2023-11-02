@@ -124,10 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ddd84596419440290a8d0c8baeed5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states:
+  brickStatesSprite:
+  - {fileID: 21300000, guid: 31c8f5b8d45664d10ac56f2e128c7d1b, type: 3}
+  - {fileID: 21300000, guid: 9959e13b9dbcd499aa637d604fa0ef0c, type: 3}
+  - {fileID: 21300000, guid: a180ec44ea6b24e9b9834e71b31dc1b4, type: 3}
   - {fileID: 21300000, guid: 6cdbb19aa95ce4b22bcae6db11679073, type: 3}
   - {fileID: 21300000, guid: 48417a20cafc146d7b92346fc56830ee, type: 3}
-  - {fileID: 21300000, guid: a180ec44ea6b24e9b9834e71b31dc1b4, type: 3}
-  - {fileID: 21300000, guid: 9959e13b9dbcd499aa637d604fa0ef0c, type: 3}
-  - {fileID: 21300000, guid: 31c8f5b8d45664d10ac56f2e128c7d1b, type: 3}
+  - {fileID: 21300000, guid: 8845c2141ce064bbe8724ffd66a6598d, type: 3}
+  points: 100
   unbreakable: 0
