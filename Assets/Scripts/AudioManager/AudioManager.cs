@@ -86,7 +86,14 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+            if (s.name == "Theme")
+            {
+                return;
+            }
+            else
+            {
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+            }
         }
     }
 
@@ -96,7 +103,14 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+            if (s.name == "Theme")
+            {
+                return;
+            }
+            else
+            {
+                s.source.volume = s.volume = PlayerPrefs.GetFloat("SoundVolume");
+            }
         }
     }
 }
